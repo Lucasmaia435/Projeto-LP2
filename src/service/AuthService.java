@@ -18,7 +18,7 @@ public class AuthService {
         try {
             List<User> users = userDAO.findAll(user -> user.getEmail().equals(email));
 
-            if (users.isEmpty()) {
+            if (users == null || users.isEmpty()) {
                 userDAO.save(new Personal(name, email));
 
                 return;

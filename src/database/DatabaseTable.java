@@ -41,11 +41,8 @@ public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
     }
 
     @Override
-    public List<T> findAll() throws DatabaseException {
-        if (!data.isEmpty())
-            return data;
-
-        throw new EntityNotFoundException("No entities found in this table!");
+    public List<T> findAll() {
+        return data;
     }
 
     @Override

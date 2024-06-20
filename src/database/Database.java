@@ -34,7 +34,7 @@ public class Database {
     public <T extends Entity> void save(Class<T> clazz, T entity) throws DatabaseException {
         checkTableExistence(clazz);
 
-        @SuppressWarnings("unchecked") // TODO: Mostrar para professor
+        @SuppressWarnings("unchecked")
         DatabaseTableI<T> table = (DatabaseTableI<T>) tables.get(clazz);
 
         table.save(entity);
@@ -50,6 +50,7 @@ public class Database {
 
     public <T extends Entity> List<? extends Entity> findAll(Class<T> clazz) throws DatabaseException {
         checkTableExistence(clazz);
+
         return tables.get(clazz).findAll();
     }
 
@@ -57,7 +58,7 @@ public class Database {
             throws DatabaseException {
         checkTableExistence(clazz);
 
-        @SuppressWarnings("unchecked") // TODO: Mostrar para professor
+        @SuppressWarnings("unchecked")
         DatabaseTableI<T> table = (DatabaseTableI<T>) tables.get(clazz);
 
         table.update(id, entity);

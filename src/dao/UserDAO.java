@@ -10,8 +10,6 @@ import entity.User;
 import exception.DAOException;
 import exception.DatabaseException;
 
-//TODO: Mostrar unchecked para o professor
-
 public class UserDAO implements DAO<User> {
     private Database database = Database.getInstance();
 

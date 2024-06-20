@@ -22,14 +22,17 @@ public class CreateWorkoutSession implements View {
         System.out.println("\nDigite o nome da seção:");
         String name = scanner.nextLine();
 
-        if (name.equals("0"))
+        if (name.equals("0")) {
             navigator.pop();
+            return;
+        }
 
         WorkoutSession session = new WorkoutSession(name, athlete.getId());
 
         workoutSessionService.save(session);
 
         navigator.pop();
+        return;
     }
 
 }

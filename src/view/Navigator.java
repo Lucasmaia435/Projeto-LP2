@@ -37,6 +37,11 @@ public class Navigator {
         showCurrentView();
     }
 
+    public void pushReplacement(View view) {
+        pages.clear();
+        push(view);
+    }
+
     private boolean canPop() {
         return pages.size() > 1;
     }

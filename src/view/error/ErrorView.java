@@ -22,6 +22,7 @@ public class ErrorView implements View {
         }
 
         navigator.pop();
+        return;
     }
 
 }

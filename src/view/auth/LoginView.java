@@ -14,14 +14,15 @@ public class LoginView implements View {
 
     @Override
     public void startView() {
-        scanner.nextLine();
-        System.out.println("Bem vindo!");
+        System.out.println("=================== Bem vindo ao FitManager! ===================");
         System.out.println("Para voltar para tela inicial digite 0");
 
         System.out.print("\nDigite o seu email: ");
 
         String email = scanner.nextLine();
-
+        if (email == "") {
+            email = scanner.nextLine();
+        }
         if (email.equals("0")) {
             navigator.pop();
             return;
@@ -31,6 +32,11 @@ public class LoginView implements View {
             System.out.println("!!! Digite um e-mail válido !!!");
 
             email = scanner.nextLine();
+
+            if (email.equals("0")) {
+                navigator.pop();
+                return;
+            }
         }
 
         login(email);

@@ -28,13 +28,14 @@ public class AthleteView implements View {
     @Override
     public void startView() {
         if (state.isPersonal()) {
-            System.out.println("Atleta: " + athlete.getName());
+            System.out.println("============ Atleta: " + athlete.getName() + " ============");
         } else {
-            System.out.println("Bem vindo " + athlete.getName() + " \n");
+            System.out.println("============ Bem vindo: " + athlete.getName() + " ============");
         }
-
+        System.out.println("----------------------------------");
         for (WorkoutSession session : getSessions()) {
             System.out.println("[" + session.getId() + "] - " + session.getName());
+            System.out.println("----------------------------------");
             validIds.add(session.getId());
         }
 
@@ -42,7 +43,7 @@ public class AthleteView implements View {
             System.out.println("Esse atleta não possui nenhuma seção de treino, registre uma!");
         }
 
-        System.out.println("\n-----------Menu-----------");
+        System.out.println("\n=========Menu=========");
 
         if (state.isPersonal()) {
             System.out.println("Digite 'A' para adicionar uma nova seção de treino.");
@@ -57,6 +58,8 @@ public class AthleteView implements View {
             System.out.println("Digite 0 para voltar para deslogar.");
         }
 
+        System.out.println("\n======================");
+
         while (true) {
             String option = scanner.nextLine();
 
@@ -69,6 +72,7 @@ public class AthleteView implements View {
 
                 if (optionInteger == 0) {
                     navigator.pop();
+                    return;
                 }
             } catch (NumberFormatException e) {
                 if (state.isPersonal()) {
@@ -78,6 +82,7 @@ public class AthleteView implements View {
 
                     if (option.equalsIgnoreCase("A")) {
                         navigator.push(new CreateWorkoutSession(athlete));
+                        return;
                     }
                 }
             }
@@ -108,5 +113,6 @@ public class AthleteView implements View {
     private void deleteAthlete() {
         personalService.deleteAthlete(athlete.getId());
         navigator.pop();
+        return;
     }
 }

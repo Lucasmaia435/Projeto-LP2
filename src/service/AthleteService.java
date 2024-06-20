@@ -18,11 +18,9 @@ public class AthleteService {
                     .findAll(session -> session.getAthleteId() == athleteId);
 
             return workoutSessions;
+        } catch (EntityNotFoundDAOException e) {
+            return List.of();
         } catch (DAOException e) {
-            if (e.getClass() == EntityNotFoundDAOException.class) {
-                return List.of();
-            }
-
             throw e;
         }
     }

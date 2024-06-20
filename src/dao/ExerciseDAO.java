@@ -11,8 +11,6 @@ import exception.DAOException;
 import exception.DatabaseException;
 import exception.EntityNotFoundDAOException;
 
-//TODO: Mostrar unchecked para o professor
-
 public class ExerciseDAO implements DAO<Exercise> {
     private Database database = Database.getInstance();
 

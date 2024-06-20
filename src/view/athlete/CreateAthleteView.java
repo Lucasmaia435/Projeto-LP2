@@ -29,8 +29,10 @@ public class CreateAthleteView implements View {
             authService.registerAthlete(nome, email, state.getCurrentUser().getId());
 
             navigator.pop();
+            return;
         } catch (DAOException e) {
             navigator.push(new ErrorView(e.getMessage()));
+            return;
         }
 
     }

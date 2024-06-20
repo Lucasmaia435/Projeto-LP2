@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import view.View;
 import view.athlete.AthleteListView;
 import view.athlete.CreateAthleteView;
+import view.auth.OnboardView;
 
 public class PersonalHomeView implements View {
 
@@ -18,13 +19,13 @@ public class PersonalHomeView implements View {
 
     @Override
     public void startView() {
-        System.out.println("Bem vindo " + state.getCurrentUser().getName() + " \n\n");
-        System.out.println("-----------Menu-----------");
+        System.out.println("============ Bem vindo: " + state.getCurrentUser().getName() + " ============");
+        System.out.println("=========Menu=========");
         System.out.println("1 - Listar alunos;");
         System.out.println("2 - Cadastrar aluno;");
 
         System.out.println("\n0 - Sair");
-
+        System.out.println("======================");
         int option = scanner.nextInt();
 
         while (!options.contains(option)) {
@@ -42,10 +43,7 @@ public class PersonalHomeView implements View {
                 break;
 
             case 0:
-                navigator.pop();
-                break;
-            default:
-                navigator.pop();
+                navigator.pushReplacement(new OnboardView());
                 break;
         }
     }

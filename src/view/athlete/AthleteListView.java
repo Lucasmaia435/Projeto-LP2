@@ -32,10 +32,11 @@ public class AthleteListView implements View {
             System.out.println("Registre algum atleta para ele aparecer nessa listagem!");
         }
 
-        System.out.println("\n-----------Menu-----------");
+        System.out.println("\n=========Menu=========");
         System.out.println("Digite o ID de um atleta para acessar a sua tela de detalhes.");
 
         System.out.println("Digite 0 para voltar para a tela anterior.");
+        System.out.println("\n======================");
 
         while (true) {
             int option = scanner.nextInt();
@@ -46,6 +47,7 @@ public class AthleteListView implements View {
 
             if (option == 0) {
                 navigator.pop();
+                return;
             }
 
         }
@@ -56,6 +58,7 @@ public class AthleteListView implements View {
             athletes = personalService.getAthletes();
         } catch (DAOException e) {
             navigator.push(new ErrorView(e.getMessage()));
+            return;
         }
     }
 
@@ -64,8 +67,10 @@ public class AthleteListView implements View {
             Athlete athlete = (Athlete) personalService.getAthleteById(id);
 
             navigator.push(new AthleteView(athlete));
+            return;
         } catch (DAOException e) {
             navigator.push(new ErrorView(e.getMessage()));
+            return;
         }
     }
 
