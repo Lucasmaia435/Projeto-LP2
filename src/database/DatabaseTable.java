@@ -52,7 +52,6 @@ public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
     public void update(int id, T entity) throws DatabaseException {
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getId() == id) {
-                entity.setId(i);
                 data.set(i, entity);
                 break;
             }

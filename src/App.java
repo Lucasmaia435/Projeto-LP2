@@ -25,7 +25,7 @@ public class App {
 
         ExerciseDAO exerciseDAO = new ExerciseDAO();
         try {
-            userDAO.save(new Personal("Lucas Personal", "lucas.maiarc435@gmail.com"));
+            userDAO.save(new Personal("Personal 1", "personal@gmail.com"));
             userDAO.save(new Athlete("Atleta 1", "atleta1@gmail.com", 1));
             userDAO.save(new Athlete("Atleta 2", "atleta2@gmail.com", 1));
 

@@ -15,10 +15,10 @@ public class ErrorView implements View {
         System.err.println("\n");
         System.out.println("erro: " + errorMessage);
         System.err.println("\n");
-        System.out.println("Digite 0 para voltar");
+        System.out.println("Digite 0 para voltar.");
 
         while (scanner.nextInt() != 0) {
-            System.out.println("Digite 0 para voltar");
+            System.out.println("Digite 0 para voltar.");
         }
 
         navigator.pop();

@@ -12,12 +12,20 @@ public class SignUpView implements View {
     public void startView() {
         scanner.nextLine();
         System.out.println("Bem vindo!");
-        System.out.println("\n\n");
+        System.out.println("Para voltar para tela inicial digite '0'.");
+        System.out.println("\n");
+
         System.out.println("Qual o seu nome?");
         String nome = scanner.nextLine();
 
+        if (nome.equals("0"))
+            navigator.pop();
+
         System.out.println("Para finalizar, qual o seu e-mail?");
         String email = scanner.nextLine();
+
+        if (email.equals("0"))
+            navigator.pop();
 
         while (!validateEmail(email)) {
             System.out.println("!!! Digite um e-mail válido !!!");

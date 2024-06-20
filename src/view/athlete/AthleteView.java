@@ -8,7 +8,6 @@ import entity.WorkoutSession;
 import exception.DAOException;
 import service.AthleteService;
 import service.PersonalService;
-import state.AuthState;
 import view.View;
 import view.error.ErrorView;
 import view.workout.CreateWorkoutSession;
@@ -21,8 +20,6 @@ public class AthleteView implements View {
         this.athlete = athlete;
     }
 
-    AuthState state = AuthState.getInstance();
-
     AthleteService athleteService = new AthleteService();
     PersonalService personalService = new PersonalService();
 
@@ -30,7 +27,11 @@ public class AthleteView implements View {
 
     @Override
     public void startView() {
-        System.out.println("Atleta: " + athlete.getName());
+        if (state.isPersonal()) {
+            System.out.println("Atleta: " + athlete.getName());
+        } else {
+            System.out.println("Bem vindo " + athlete.getName() + " \n");
+        }
 
         for (WorkoutSession session : getSessions()) {
             System.out.println("[" + session.getId() + "] - " + session.getName());
@@ -41,15 +42,20 @@ public class AthleteView implements View {
             System.out.println("Esse atleta não possui nenhuma seção de treino, registre uma!");
         }
 
-        System.out.println("\n\n-----------Menu-----------");
+        System.out.println("\n-----------Menu-----------");
 
         if (state.isPersonal()) {
-            System.out.println("Digite 'A' para adicionar uma nova seção de treino");
-            System.out.println("Digite 'X' para deletar o atleta");
+            System.out.println("Digite 'A' para adicionar uma nova seção de treino.");
+            System.out.println("Digite 'X' para deletar o atleta.");
         }
 
-        System.out.println("Digite o ID de uma seção para acessar a sua tela de detalhes");
-        System.out.println("Digite 0 para voltar para a tela anterior");
+        System.out.println("Digite o ID de uma seção para acessar a sua tela de detalhes.");
+
+        if (state.isPersonal()) {
+            System.out.println("Digite 0 para voltar para a tela anterior.");
+        } else {
+            System.out.println("Digite 0 para voltar para deslogar.");
+        }
 
         while (true) {
             String option = scanner.nextLine();
@@ -66,11 +72,11 @@ public class AthleteView implements View {
                 }
             } catch (NumberFormatException e) {
                 if (state.isPersonal()) {
-                    if (option.equals("X")) {
+                    if (option.equalsIgnoreCase("X")) {
                         deleteAthlete();
                     }
 
-                    if (option.equals("A")) {
+                    if (option.equalsIgnoreCase("A")) {
                         navigator.push(new CreateWorkoutSession(athlete));
                     }
                 }

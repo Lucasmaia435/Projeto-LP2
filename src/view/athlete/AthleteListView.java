@@ -21,7 +21,7 @@ public class AthleteListView implements View {
     public void startView() {
         getAthletes();
 
-        System.out.println("\n\nTodos os atletas vinculados a você: \n\n");
+        System.out.println("\nTodos os atletas vinculados a você: \n");
 
         for (User athlete : athletes) {
             System.out.println("[" + athlete.getId() + "] - " + athlete.getName() + " - " + athlete.getEmail());
@@ -32,10 +32,10 @@ public class AthleteListView implements View {
             System.out.println("Registre algum atleta para ele aparecer nessa listagem!");
         }
 
-        System.out.println("\n\n-----------Menu-----------");
-        System.out.println("Digite o ID de um atleta para acessar a sua tela de detalhes");
+        System.out.println("\n-----------Menu-----------");
+        System.out.println("Digite o ID de um atleta para acessar a sua tela de detalhes.");
 
-        System.out.println("Digite 0 para voltar para a tela anterior");
+        System.out.println("Digite 0 para voltar para a tela anterior.");
 
         while (true) {
             int option = scanner.nextInt();

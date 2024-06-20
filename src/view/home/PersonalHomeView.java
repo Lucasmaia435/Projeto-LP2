@@ -2,13 +2,11 @@ package view.home;
 
 import java.util.ArrayList;
 
-import state.AuthState;
 import view.View;
 import view.athlete.AthleteListView;
 import view.athlete.CreateAthleteView;
 
 public class PersonalHomeView implements View {
-    AuthState state = AuthState.getInstance();
 
     ArrayList<Integer> options = new ArrayList<>() {
         {
@@ -20,12 +18,12 @@ public class PersonalHomeView implements View {
 
     @Override
     public void startView() {
-        System.out.println("\n\nBem vindo " + state.getCurrentUser().getName() + " \n\n");
+        System.out.println("Bem vindo " + state.getCurrentUser().getName() + " \n\n");
+        System.out.println("-----------Menu-----------");
+        System.out.println("1 - Listar alunos;");
+        System.out.println("2 - Cadastrar aluno;");
 
-        System.out.println("1 - Listar alunos");
-        System.out.println("2 - Cadastrar aluno");
-
-        System.out.println("\n\n0 - Sair");
+        System.out.println("\n0 - Sair");
 
         int option = scanner.nextInt();
 

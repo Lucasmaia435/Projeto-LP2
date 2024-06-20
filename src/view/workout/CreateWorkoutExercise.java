@@ -31,9 +31,9 @@ public class CreateWorkoutExercise implements View {
             validIds.add(exercise.getId());
         }
 
-        System.out.println("\n\n-----------Menu-----------");
-        System.out.println("Digite o id do exercicio para adiciona-lo a seção");
-        System.out.println("Digite 0 para cancelar a operação");
+        System.out.println("\n-----------Menu-----------");
+        System.out.println("Digite o id do exercicio para adiciona-lo a seção.");
+        System.out.println("Digite 0 para cancelar a operação.");
 
         while (true) {
             int option = scanner.nextInt();
@@ -48,6 +48,7 @@ public class CreateWorkoutExercise implements View {
                 WorkoutExercise newExercise = new WorkoutExercise(exerciseService.getExerciseById(option), sets, reps);
 
                 System.out.println("Quer confirmar a inserção de " + newExercise + "? (S/N)");
+
                 while (true) {
                     String confirm = scanner.nextLine();
 

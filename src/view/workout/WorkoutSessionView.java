@@ -30,26 +30,26 @@ public class WorkoutSessionView implements View {
         }
 
         if (session.getExercises().isEmpty()) {
-            System.out.println("Essa seção não possui nenhum exercicio, registre algum!");
+            System.out.println("Essa seção não possui nenhum exercicio, registre algum!.");
         }
 
-        System.out.println("\n\n-----------Menu-----------");
+        System.out.println("\n-----------Menu-----------");
         if (state.isPersonal()) {
-            System.out.println("Digite 'A' para adicionar um exercicio a seção atual");
-            System.out.println("Digite 'X' para deletar o atleta");
+            System.out.println("Digite 'A' para adicionar um exercicio a seção atual.");
+            System.out.println("Digite 'X' para deletar o atleta.");
         }
 
-        System.out.println("Digite 0 para voltar para a tela anterior");
+        System.out.println("Digite 0 para voltar para a tela anterior.");
 
         while (true) {
             String option = scanner.nextLine();
 
             if (state.isPersonal()) {
-                if (option.equals("X")) {
+                if (option.equalsIgnoreCase("X")) {
                     deleteWorkoutSession();
                 }
 
-                if (option.equals("A")) {
+                if (option.equalsIgnoreCase("A")) {
                     navigator.push(new CreateWorkoutExercise(session));
                 }
             }

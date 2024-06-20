@@ -2,7 +2,6 @@ package service;
 
 import dao.UserDAO;
 import entity.Athlete;
-import entity.Personal;
 import entity.User;
 import exception.DAOException;
 
