@@ -1,18 +1,16 @@
-## Getting Started
+# PersonalTool
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Sistema desenvolvido para facilitar a gestão de atletas de um personal. Nesse sistema terão as seguintes funcionalidades:
 
-## Folder Structure
+1. Gerenciamento de Atletas
+   1. Listagem de atletas cadastrados.
+   1. Atualização de dados de atletas.
+   1. Remoção do cadastro de um atleta.
+1. Gerenciamento de Sessões de treino.
+   1. Cadastro de sessões de treino em alunos, cada aluno pode ter mais de uma seção de treino.
+   1. Adicionar/remover exercicios da seção.
+1. Gerenciamento de exercicios.
 
-The workspace contains two folders by default, where:
+   1. O sistema já disponibiliza vários exercicios para serem cadastrados. Precisando ajustar apenas as séries e repetições de acordo com cada seção de treino.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+   1. Cadastro de novos exercicios personalizados.

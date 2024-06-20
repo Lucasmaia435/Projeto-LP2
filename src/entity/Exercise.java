@@ -1,9 +1,13 @@
 package entity;
 
 public class Exercise extends Entity {
-    String name;
+    private String name;
 
-    Exercise(String name) {
+    public String getName() {
+        return name;
+    }
+
+    public Exercise(String name) {
         this.name = name;
     }
 }

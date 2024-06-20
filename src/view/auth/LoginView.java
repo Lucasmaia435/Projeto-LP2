@@ -1,28 +1,28 @@
-package view;
+package view.auth;
 
-import java.util.Scanner;
-
+import entity.Athlete;
 import entity.User;
 import exception.DAOException;
 import service.AuthService;
 import state.AuthState;
+import view.View;
+import view.athlete.AthleteView;
+import view.error.ErrorView;
+import view.home.PersonalHomeView;
 
-public class AuthView implements View {
+public class LoginView implements View {
     AuthState state = AuthState.getInstance();
     AuthService authService = new AuthService();
 
     @Override
     public void startView() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Bem vindo!");
 
         System.out.println("\nDigite o seu email:");
 
-        // String email = scanner.next(); TODO: Uncomment at presentation
-        String email = "lucas.maiarc435@gmail.com";
-        login(email);
+        String email = scanner.next();
 
-        scanner.close();
+        login(email);
     }
 
     private void login(String email) {
@@ -32,8 +32,12 @@ public class AuthView implements View {
             if (user == null) {
                 navigator.push(new ErrorView("Não foi encontrado um usuário com e-mail: " + email));
             }
+            if (state.isPersonal()) {
+                navigator.push(new PersonalHomeView());
+            } else {
+                navigator.push(new AthleteView((Athlete) state.getCurrentUser()));
+            }
 
-            navigator.push(new MainView());
         } catch (DAOException e) {
             navigator.push(new ErrorView("Não foi encontrado um usuário com e-mail: " + e));
 

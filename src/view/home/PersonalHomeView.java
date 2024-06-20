@@ -1,10 +1,13 @@
-package view;
+package view.home;
 
 import java.util.ArrayList;
 
 import state.AuthState;
+import view.View;
+import view.athlete.AthleteListView;
+import view.athlete.CreateAthleteView;
 
-public class MainView implements View {
+public class PersonalHomeView implements View {
     AuthState state = AuthState.getInstance();
 
     ArrayList<Integer> options = new ArrayList<>() {
@@ -12,7 +15,6 @@ public class MainView implements View {
             add(0);
             add(1);
             add(2);
-            add(3);
         }
     };
 
@@ -22,7 +24,6 @@ public class MainView implements View {
 
         System.out.println("1 - Listar alunos");
         System.out.println("2 - Cadastrar aluno");
-        System.out.println("3 - Cadastrar aluno");
 
         System.out.println("\n\n0 - Sair");
 
@@ -39,12 +40,12 @@ public class MainView implements View {
                 navigator.push(new AthleteListView());
                 break;
             case 2:
-                navigator.push(null);
-                break;
-            case 3:
-                navigator.push(null);
+                navigator.push(new CreateAthleteView());
                 break;
 
+            case 0:
+                navigator.pop();
+                break;
             default:
                 navigator.pop();
                 break;

@@ -11,4 +11,8 @@ public class WorkoutExercise extends Entity {
         this.reps = reps;
     }
 
+    @Override
+    public String toString() {
+        return exercise.getName() + " - " + sets + "x" + reps;
+    }
 }

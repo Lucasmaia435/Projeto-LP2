@@ -6,20 +6,18 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import database.Database;
-import entity.Exercise;
+import entity.WorkoutSession;
 import exception.DAOException;
 import exception.DatabaseException;
 import exception.EntityNotFoundDAOException;
 
-//TODO: Mostrar unchecked para o professor
-
-public class ExerciseDAO implements DAO<Exercise> {
+public class WorkoutSessionDAO implements DAO<WorkoutSession> {
     private Database database = Database.getInstance();
 
     @Override
     public void delete(int id) throws DAOException {
         try {
-            database.delete(Exercise.class, id);
+            database.delete(WorkoutSession.class, id);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
@@ -27,9 +25,9 @@ public class ExerciseDAO implements DAO<Exercise> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Exercise> findAll() throws DAOException {
+    public List<WorkoutSession> findAll() throws DAOException {
         try {
-            return (List<Exercise>) database.findAll(Exercise.class);
+            return (List<WorkoutSession>) database.findAll(WorkoutSession.class);
         } catch (DatabaseException e) {
             throw new EntityNotFoundDAOException(e.getMessage());
         }
@@ -37,9 +35,9 @@ public class ExerciseDAO implements DAO<Exercise> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Exercise> findAll(Predicate<Exercise> filter) throws DAOException {
+    public List<WorkoutSession> findAll(Predicate<WorkoutSession> filter) throws DAOException {
         try {
-            return ((List<Exercise>) database.findAll(Exercise.class)).stream().filter(filter).toList();
+            return ((List<WorkoutSession>) database.findAll(WorkoutSession.class)).stream().filter(filter).toList();
         } catch (DatabaseException e) {
             throw new EntityNotFoundDAOException(e.getMessage());
         }
@@ -47,19 +45,20 @@ public class ExerciseDAO implements DAO<Exercise> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Exercise> findAll(Comparator<Exercise> comparator) throws DAOException {
+    public List<WorkoutSession> findAll(Comparator<WorkoutSession> comparator) throws DAOException {
         try {
-            return ((List<Exercise>) database.findAll(Exercise.class)).stream().sorted(comparator).toList();
+            return ((List<WorkoutSession>) database.findAll(WorkoutSession.class)).stream().sorted(comparator).toList();
         } catch (DatabaseException e) {
             throw new EntityNotFoundDAOException(e.getMessage());
+
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public Optional<Exercise> findById(int id) throws DAOException {
+    public Optional<WorkoutSession> findById(int id) throws DAOException {
         try {
-            return (Optional<Exercise>) database.findById(Exercise.class, id);
+            return (Optional<WorkoutSession>) database.findById(WorkoutSession.class, id);
         } catch (DatabaseException e) {
             e.printStackTrace();
 
@@ -69,9 +68,9 @@ public class ExerciseDAO implements DAO<Exercise> {
     }
 
     @Override
-    public void save(Exercise entity) throws DAOException {
+    public void save(WorkoutSession entity) throws DAOException {
         try {
-            database.save(Exercise.class, entity);
+            database.save(WorkoutSession.class, entity);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
@@ -79,9 +78,9 @@ public class ExerciseDAO implements DAO<Exercise> {
     }
 
     @Override
-    public void update(int id, Exercise entity) throws DAOException {
+    public void update(int id, WorkoutSession entity) throws DAOException {
         try {
-            database.update(Exercise.class, id, entity);
+            database.update(WorkoutSession.class, id, entity);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }

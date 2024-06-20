@@ -7,11 +7,12 @@ import entity.User;
 import exception.DAOException;
 
 import java.util.List;
+import java.util.Optional;
 
 import state.AuthState;
 
 public class PersonalService {
-    Personal personal = (Personal) AuthState.getInstance().getCurrentUser();
+    User personal = AuthState.getInstance().getCurrentUser();
     UserDAO userDAO = new UserDAO();
 
     public List<User> getAthletes() throws DAOException {
@@ -23,6 +24,27 @@ public class PersonalService {
         } catch (DAOException e) {
             throw e;
         }
+    }
 
+    public User getAthleteById(int id) throws DAOException {
+        try {
+            Optional<User> athlete = userDAO.findById(id);
+
+            if (athlete.isPresent()) {
+                return athlete.get();
+            }
+
+            return null;
+        } catch (DAOException e) {
+            throw e;
+        }
+    }
+
+    public void deleteAthlete(int id) {
+        try {
+            userDAO.delete(id);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
     }
 }

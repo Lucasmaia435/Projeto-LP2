@@ -11,7 +11,7 @@ import exception.EntityNotFoundException;
 public class DatabaseTable<T extends Entity> implements DatabaseTableI<T> {
     private ArrayList<T> data;
 
-    private int id = -1;
+    private int id = 0;
 
     DatabaseTable() {
         data = new ArrayList<>();

@@ -1,5 +1,6 @@
 package state;
 
+import entity.Personal;
 import entity.User;
 
 public class AuthState {
@@ -13,6 +14,14 @@ public class AuthState {
     }
 
     private User currentUser;
+
+    public Boolean isPersonal() {
+        if (currentUser != null) {
+            return currentUser.getClass() == Personal.class;
+        }
+
+        return false;
+    }
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
